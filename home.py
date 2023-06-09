@@ -107,7 +107,7 @@ if select_annee != min(annee_dispo):
     dif_percent_maison = difference(pperm_m_m_before.iloc[0],pperm_m_m.iloc[0])
 
     filtered_df_appartement_m2_before = df[(df["annee"] == select_annee-1) & (df["type_local"] == "Appartement")]
-    if len(pperm_m_a_before) == 0 and (len(pperm_m_a) == 0):
+    if (len(pperm_m_a_before) == 0) and (len(pperm_m_a) == 0):
         dif_percent_appartement = "0 %"
     else:
         pperm_m_a_before = filtered_df_appartement_m2_before.groupby("annee").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
