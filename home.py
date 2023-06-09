@@ -82,8 +82,8 @@ if len(pperm_m1) == 0:
     pperm_m1 = pd.DataFrame(columns=['0'])
     
 combined_df_vol= pd.concat([pperm_m1, pperm_a1], axis=1)
-#combined_df_vol.columns = ['Maison', 'Appartement']
-combined_df_vol = combined_df_vol.rename(columns={0: "Maison", 1: "Appartement"})
+combined_df_vol.columns = ['Maison', 'Appartement']
+#combined_df_vol = combined_df_vol.rename(columns={0: "Maison", 1: "Appartement"})
 
 ############################################### MAINPAGE
 dyna_default = "Charente Maritime"
