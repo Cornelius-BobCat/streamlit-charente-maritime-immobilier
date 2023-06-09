@@ -1,3 +1,4 @@
 geopandas
 plotly.express
 streamlit-plotly-events
+geopy
