@@ -13,7 +13,7 @@ df_17['prix_m2'] = df_17['valeur_fonciere'] / df_17['surface_reelle_bati']
 def get_coordinates(address):
     location = geolocator.geocode(address, timeout = 25)
     st.write(location)
-    if (location is None) or (location == False) or (location == 0) or (len(location) != 0) :
+    if location is not None:
         latitude = location.latitude
         longitude = location.longitude
         return latitude, longitude
