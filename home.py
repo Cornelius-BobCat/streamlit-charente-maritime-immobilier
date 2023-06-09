@@ -153,7 +153,7 @@ with col1:
 with col2:
     st.subheader("Evolution du volume de ventes")
     st.write(combined_df_vol)
-    combined_df_vol = combined_df_vol.fillna(float64())
+    combined_df_vol = combined_df_vol.fillna(float64(0))
     st.line_chart(combined_df_vol)
 
 st.divider()
