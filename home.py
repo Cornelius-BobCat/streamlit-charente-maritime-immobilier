@@ -149,12 +149,11 @@ st.divider()
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("Evolution des prix de ventes / m2")
-    st.write(type(combined_df_vente['Appartement'].iloc[0]))
     st.line_chart(combined_df_vente)
 with col2:
     st.subheader("Evolution du volume de ventes")
     st.write(combined_df_vol)
-    combined_df_vol = combined_df_vol.fillna(None)
+    combined_df_vol = combined_df_vol.fillna('Nan')
     st.line_chart(combined_df_vol)
 
 st.divider()
