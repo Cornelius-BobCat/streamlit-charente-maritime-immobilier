@@ -90,6 +90,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+############################################### INIT SIDEBAR
+st.sidebar.title("POWER IMMO")
+
 st.markdown(
     """
     <style>
