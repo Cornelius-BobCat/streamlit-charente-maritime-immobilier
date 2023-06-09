@@ -235,7 +235,7 @@ with ta:
         a, b = st.columns(2)
         with a:
             #### CALCUL SUR DF_17 PV MEAN APPART 
-            if len(df_17[df_17['type_local'] == 'Appartement']) > 1:
+            if len(df_17[df_17['type_local'] == 'Appartement']):
                 moyenne_appartement = df_17[df_17['type_local'] == 'Appartement']['valeur_fonciere'].mean()
                 moyenne_appartement_m2 = df_17[df_17['type_local'] == 'Appartement']['surface_reelle_bati'].mean()
                 moyenne_min_appartement = df_17[df_17['type_local'] == 'Appartement'].groupby('type_local')['valeur_fonciere', 'surface_reelle_bati'].apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).min())
