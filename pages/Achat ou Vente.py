@@ -277,8 +277,12 @@ with ta:
             if len(df_17[df_17['type_local'] == 'Maison']):
                 moyenne_maison = df_17[df_17['type_local'] == 'Maison']['valeur_fonciere'].mean()
                 moyenne_maison_m2 = df_17[df_17['type_local'] == 'Maison']['surface_reelle_bati'].mean()
-                moyenne_min_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')['valeur_fonciere', 'surface_reelle_bati'].apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).min())
-                moyenne_max_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')['valeur_fonciere', 'surface_reelle_bati'].apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).max())
+                DF_moyenne_min_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')
+                DF_moyenne_min_maison = DF_moyenne_min_maison[['valeur_fonciere', 'surface_reelle_bati']]
+                moyenne_min_maison = DF_moyenne_min_maison.apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).min())
+                DF_moyenne_max_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')
+                DF_moyenne_max_maison = DF_moyenne_max_maison[['valeur_fonciere', 'surface_reelle_bati']]
+                moyenne_max_maison = DF_moyenne_max_maison.apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).max())
                 moyenne_maison = round(moyenne_maison/moyenne_maison_m2)
                 moyenne_min_maison = round(moyenne_min_maison[0])
                 moyenne_max_maison = round(moyenne_max_maison[0])
