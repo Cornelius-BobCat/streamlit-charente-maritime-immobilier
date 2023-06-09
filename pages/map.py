@@ -25,7 +25,8 @@ st.markdown(
 ############################################### CHARGEMENT DF
 df = pd.read_csv('df_17.csv')
 df = df.dropna(subset=['code_postal'])
-
+############################################### INIT SIDEBAR
+st.sidebar.title("POWER IMMO")
 
 ############################################### MAP
 
