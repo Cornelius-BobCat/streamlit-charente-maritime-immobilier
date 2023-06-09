@@ -238,7 +238,7 @@ with ta:
            
             if len(df_17[df_17['type_local'] == 'Appartement']):
                 moyenne_appartement = df_17[df_17['type_local'] == 'Appartement']['valeur_fonciere'].mean()
-                st.write(df_17)
+                #st.write(df_17)
                 moyenne_appartement_m2 = df_17[df_17['type_local'] == 'Appartement']['surface_reelle_bati'].mean()
                 DF_moyenne_min_appartement = df_17[df_17['type_local'] == 'Appartement'].groupby('type_local')
                 DF_moyenne_min_appartement = DF_moyenne_min_appartement[['valeur_fonciere', 'surface_reelle_bati']]
@@ -275,14 +275,18 @@ with ta:
         with a:
             #### CALCUL SUR DF_17 PV MEAN MAISON 
             if len(df_17[df_17['type_local'] == 'Maison']):
+                st.write(df_17)
                 moyenne_maison = df_17[df_17['type_local'] == 'Maison']['valeur_fonciere'].mean()
                 moyenne_maison_m2 = df_17[df_17['type_local'] == 'Maison']['surface_reelle_bati'].mean()
+                     
                 DF_moyenne_min_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')
                 DF_moyenne_min_maison = DF_moyenne_min_maison[['valeur_fonciere', 'surface_reelle_bati']]
                 moyenne_min_maison = DF_moyenne_min_maison.apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).min())
+              
                 DF_moyenne_max_maison = df_17[df_17['type_local'] == 'Maison'].groupby('type_local')
                 DF_moyenne_max_maison = DF_moyenne_max_maison[['valeur_fonciere', 'surface_reelle_bati']]
                 moyenne_max_maison = DF_moyenne_max_maison.apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).max())
+                     
                 moyenne_maison = round(moyenne_maison/moyenne_maison_m2)
                 moyenne_min_maison = round(moyenne_min_maison[0])
                 moyenne_max_maison = round(moyenne_max_maison[0])
