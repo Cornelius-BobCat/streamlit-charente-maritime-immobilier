@@ -145,6 +145,7 @@ with col1:
     st.line_chart(combined_df_vente)
 with col2:
     st.subheader("Evolution du volume de ventes")
+    st.write(combined_df_vol)
     st.line_chart(combined_df_vol)
 
 st.divider()
