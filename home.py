@@ -116,7 +116,7 @@ if select_annee != min(annee_dispo):
 else:
     dif_percent_maison = "0 %"
     dif_percent_appartement = "0 %"
-
+st.write(pperm_m_a.iloc[0])
 # init metric principal
 metric1 = str(round(pperm_m_m.iloc[0]))+ " €/m²"
 metric2 = str(round(pperm_m_a.iloc[0]))+ " €/m²"
