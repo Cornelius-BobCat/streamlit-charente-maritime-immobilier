@@ -62,6 +62,8 @@ pperm_a = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum()
 
 if len(pperm_a) == 0:
     pperm_a = pd.DataFrame(columns=['1'])
+if len(pperm_m) == 0:
+    pperm_m = pd.DataFrame(columns=['0'])
     
 
 combined_df_vente = pd.concat([pperm_m, pperm_a], axis=1)
