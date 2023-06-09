@@ -27,7 +27,7 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True 
 )
 ############################################### INIT SIDEBAR
 st.sidebar.title("POWER IMMO")
@@ -61,8 +61,8 @@ filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Apparteme
 pperm_a = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
 st.write(pperm_m)
 if len(pperm_a) == 0:
-    pperm_a = pd.DataFrame()
-    pperm_a.columns = ['1']
+    pperm_a = pd.DataFrame(columns=['1'])
+
 st.write(pperm_a)
 combined_df_vente = pd.concat([pperm_m, pperm_a], axis=1)
 st.write(combined_df_vente)
