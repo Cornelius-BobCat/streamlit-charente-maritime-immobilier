@@ -275,7 +275,7 @@ with ta:
         with a:
             #### CALCUL SUR DF_17 PV MEAN MAISON 
             if len(df_17[df_17['type_local'] == 'Maison']):
-                st.write(df_17)
+                #st.write(df_17)
                 moyenne_maison = df_17[df_17['type_local'] == 'Maison']['valeur_fonciere'].mean()
                 moyenne_maison_m2 = df_17[df_17['type_local'] == 'Maison']['surface_reelle_bati'].mean()
                      
