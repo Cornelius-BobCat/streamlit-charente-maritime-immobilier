@@ -68,7 +68,7 @@ if len(pperm_m) == 0:
 
 combined_df_vente = pd.concat([pperm_m, pperm_a], axis=1)
 #combined_df_vente.columns = ['Maison', 'Appartement']
-combined_df_vente = combined_df_vente.rename(columns={0: "Maison", 1: "Appartement"})
+combined_df_vente = combined_df_vente.rename(columns={0: "Maison", "1": "Appartement"})
 
 # creation du df volume /vente graph
 filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Maison")]
