@@ -2,3 +2,4 @@ geopandas
 plotly.express
 streamlit-plotly-events
 geopy
+scikit-learn
