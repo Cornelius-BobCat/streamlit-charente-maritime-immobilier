@@ -75,7 +75,8 @@ pperm_m1 = filtered_df.groupby("mois").apply(lambda x: x["id_mutation"].count())
 filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Appartement")]
 pperm_a1 = filtered_df.groupby("mois").apply(lambda x: x["id_mutation"].count())
 combined_df_vol= pd.concat([pperm_m1, pperm_a1], axis=1)
-combined_df_vol.columns = ['Maison', 'Appartement']
+#combined_df_vol.columns = ['Maison', 'Appartement']
+combined_df_vol = combined_df_vol.rename(columns={"0": "Maison", "1": "Appartement"})
 
 ############################################### MAINPAGE
 dyna_default = "Charente Maritime"
