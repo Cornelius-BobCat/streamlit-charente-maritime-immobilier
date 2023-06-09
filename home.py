@@ -149,7 +149,7 @@ st.divider()
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("Evolution des prix de ventes / m2")
-    st.write(combined_df_vente)
+    st.write(type(combined_df_vente['Appartement'][0]))
     st.line_chart(combined_df_vente)
 with col2:
     st.subheader("Evolution du volume de ventes")
