@@ -9,6 +9,9 @@ geolocator = Nominatim(user_agent="my_app")
 df_17 = df_17 = pd.read_csv('df_17.csv')
 df_17['prix_m2'] = df_17['valeur_fonciere'] / df_17['surface_reelle_bati']
 #st.write(df_17)
+############################################### INIT SIDEBAR
+st.sidebar.title("POWER IMMO")
+
 
 def get_coordinates(address):
     location = geolocator.geocode(address, timeout = 25)
