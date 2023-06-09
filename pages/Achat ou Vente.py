@@ -240,7 +240,8 @@ with ta:
                 moyenne_appartement = df_17[df_17['type_local'] == 'Appartement']['valeur_fonciere'].mean()
                 st.write(df_17)
                 moyenne_appartement_m2 = df_17[df_17['type_local'] == 'Appartement']['surface_reelle_bati'].mean()
-                DF_moyenne_min_appartement = df_17[df_17['type_local'] == 'Appartement'].groupby('type_local')['valeur_fonciere', 'surface_reelle_bati']
+                DF_moyenne_min_appartement = df_17[df_17['type_local'] == 'Appartement'].groupby('type_local')
+                DF_moyenne_min_appartement = DF_moyenne_min_appartement[['valeur_fonciere', 'surface_reelle_bati']]
                 moyenne_min_appartement = DF_moyenne_min_appartement.apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).min())
                 moyenne_max_appartement = df_17[df_17['type_local'] == 'Appartement'].groupby('type_local')['valeur_fonciere', 'surface_reelle_bati'].apply(lambda x: (x['valeur_fonciere'] / x['surface_reelle_bati']).max())
                 moyenne_appartement = round(moyenne_appartement/moyenne_appartement_m2)
