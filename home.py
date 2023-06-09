@@ -59,8 +59,9 @@ filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Maison")]
 pperm_m = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
 filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Appartement")]
 pperm_a = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
-st.write(pperm_a)
 st.write(pperm_m)
+if len(pperm_a) == 0:
+    pperm_a = pd.DataFrame()
 combined_df_vente = pd.concat([pperm_m, pperm_a], axis=1)
 st.write(combined_df_vente)
 combined_df_vente.columns = ['Maison', 'Appartement']
