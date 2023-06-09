@@ -11,17 +11,14 @@ df_17['prix_m2'] = df_17['valeur_fonciere'] / df_17['surface_reelle_bati']
 #st.write(df_17)
 
 def get_coordinates(address):
-    
-    if geolocator.geocode(address):
-        location = geolocator.geocode(address)
-        if location:
-            latitude = location.latitude
-            longitude = location.longitude
-            return latitude, longitude
-        else:
-            return False
+    location = geolocator.geocode(address, timeout = 25)
+    if location is None: 
+        latitude = location.latitude
+        longitude = location.longitude
+        return latitude, longitude
     else:
         return False
+
     
 def linearRegression(encoded_df, select_local_type, select_surface_reelle_bati, select_surface_terrain, nb_piece_prin):
     encoded_df = pd.get_dummies(df, columns=["type_local"])
