@@ -59,11 +59,11 @@ filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Maison")]
 pperm_m = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
 filtered_df = df[(df["annee"] == select_annee) & (df["type_local"] == "Appartement")]
 pperm_a = filtered_df.groupby("mois").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
-st.write(pperm_m)
+
 if len(pperm_a) == 0:
     pperm_a = pd.DataFrame(columns=['1'])
     
-st.write(pperm_a)
+
 combined_df_vente = pd.concat([pperm_m, pperm_a], axis=1)
 st.write(combined_df_vente)
 #combined_df_vente.columns = ['Maison', 'Appartement']
@@ -98,7 +98,7 @@ vente_maison_per_an = str(filtered_df_maison_m2.shape[0])
 filtered_df_appartement_m2 = df[(df["annee"] == select_annee) & (df["type_local"] == "Appartement")]
 pperm_m_a = filtered_df_appartement_m2.groupby("annee").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
 vente_appartement_per_an = str(filtered_df_appartement_m2.shape[0])
-st.write(pperm_m_a)
+
 # calcul métric comparaison N-1 si existant
 if select_annee != min(annee_dispo):
     filtered_df_maison_m2_before = df[(df["annee"] == select_annee-1) & (df["type_local"] == "Maison")]
@@ -107,7 +107,7 @@ if select_annee != min(annee_dispo):
     dif_percent_maison = difference(pperm_m_m_before.iloc[0],pperm_m_m.iloc[0])
 
     filtered_df_appartement_m2_before = df[(df["annee"] == select_annee-1) & (df["type_local"] == "Appartement")]
-    if len(filtered_df_appartement_m2_before) == 0:
+    if len(pperm_m_a_before) == 0 and (len(pperm_m_a) == 0):
         dif_percent_appartement = "0 %"
     else:
         pperm_m_a_before = filtered_df_appartement_m2_before.groupby("annee").apply(lambda x: x["valeur_fonciere"].sum() / x["surface_reelle_bati"].sum())
@@ -118,8 +118,15 @@ else:
     dif_percent_appartement = "0 %"
 
 # init metric principal
-metric1 = str(round(pperm_m_m.iloc[0]))+ " €/m²"
-metric2 = str(round(pperm_m_a.iloc[0]))+ " €/m²"
+if len(pperm_m_m) != 0:
+    metric1 = str(round(pperm_m_m.iloc[0]))+ " €/m²"
+else:
+    metric1= "null"
+    
+if len(pperm_m_a) != 0:
+    metric2 = str(round(pperm_m_a.iloc[0]))+ " €/m²"
+else:
+    metric2 = "null"
 
 # init dif % metric
 
